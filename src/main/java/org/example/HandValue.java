@@ -87,16 +87,36 @@ public class HandValue {
     }
     public boolean isStraight(List<Card> hand) {
         Collections.sort(hand);
-        for (int i = 0; i < hand.size() - 1; i++) {
-            int currentValue = hand.get(i).getValue();
-            int nextValue = hand.get(i + 1).getValue();
-            if (nextValue - currentValue != 1) {
-                return false;
+
+        // Check for A-2-3-4-5 straight
+        boolean isAceLowStraight = hand.get(0).getValue() == 2 &&
+                hand.get(1).getValue() == 3 &&
+                hand.get(2).getValue() == 4 &&
+                hand.get(3).getValue() == 5 &&
+                hand.get(4).getValue() == 14; // Ace is considered as 1 for low straight
+
+        // Check for 2-3-4-5-A straight
+        boolean isAceHighStraight = hand.get(0).getValue() == 2 &&
+                hand.get(1).getValue() == 3 &&
+                hand.get(2).getValue() == 4 &&
+                hand.get(3).getValue() == 5 &&
+                hand.get(4).getValue() == 14; // Ace is considered as 14 for high straight
+
+        // Check for other straights
+        if (!isAceLowStraight && !isAceHighStraight) {
+            for (int i = 0; i < hand.size() - 1; i++) {
+                int currentValue = hand.get(i).getValue();
+                int nextValue = hand.get(i + 1).getValue();
+                if (nextValue - currentValue != 1) {
+                    return false;
+                }
             }
         }
 
         return true;
     }
+
+
 
     public boolean isThreeOfAKind(List<Card> hand) {
         for (Card card : hand) {

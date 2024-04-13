@@ -150,36 +150,43 @@ public class HandValueTest {
     public void testIsStraight() {
         HandValue handValue = new HandValue();
 
-        // Test a valid straight
-        List<Card> straightHand = Arrays.asList(
-                new Card("2", "Hearts"),
-                new Card("3", "Diamonds"),
-                new Card("4", "Clubs"),
-                new Card("5", "Spades"),
-                new Card("6", "Hearts")
-        );
-        assertTrue(handValue.isStraight(straightHand));
+        // Test a valid straight: A-2-3-4-5 (Ace is considered as 1 for low straight)
+        List<Card> aceLowStraight = new ArrayList<>();
+        aceLowStraight.add(new Card("2", "Hearts"));
+        aceLowStraight.add(new Card("3", "Diamonds"));
+        aceLowStraight.add(new Card("4", "Clubs"));
+        aceLowStraight.add(new Card("5", "Spades"));
+        aceLowStraight.add(new Card("A", "Hearts"));
+        assertTrue(handValue.isStraight(aceLowStraight));
 
-        // Test a straight with Ace high
-        List<Card> aceHighStraightHand = Arrays.asList(
-                new Card("10", "Hearts"),
-                new Card("J", "Diamonds"),
-                new Card("Q", "Clubs"),
-                new Card("K", "Spades"),
-                new Card("A", "Hearts")
-        );
-        assertTrue(handValue.isStraight(aceHighStraightHand));
+        // Test a valid straight: 10-J-Q-K-A (Ace is considered as 14 for high straight)
+        List<Card> aceHighStraight = new ArrayList<>();
+        aceHighStraight.add(new Card("10", "Hearts"));
+        aceHighStraight.add(new Card("J", "Diamonds"));
+        aceHighStraight.add(new Card("Q", "Clubs"));
+        aceHighStraight.add(new Card("K", "Spades"));
+        aceHighStraight.add(new Card("A", "Hearts"));
+        assertTrue(handValue.isStraight(aceHighStraight));
+
+        // Test a valid straight: 2-3-4-5-6
+        List<Card> regularStraight = new ArrayList<>();
+        regularStraight.add(new Card("2", "Hearts"));
+        regularStraight.add(new Card("3", "Diamonds"));
+        regularStraight.add(new Card("4", "Clubs"));
+        regularStraight.add(new Card("5", "Spades"));
+        regularStraight.add(new Card("6", "Hearts"));
+        assertTrue(handValue.isStraight(regularStraight));
 
         // Test a non-straight hand
-        List<Card> nonStraightHand = Arrays.asList(
-                new Card("2", "Hearts"),
-                new Card("3", "Diamonds"),
-                new Card("4", "Clubs"),
-                new Card("7", "Spades"),
-                new Card("8", "Hearts")
-        );
+        List<Card> nonStraightHand = new ArrayList<>();
+        nonStraightHand.add(new Card("2", "Hearts"));
+        nonStraightHand.add(new Card("4", "Diamonds"));
+        nonStraightHand.add(new Card("7", "Clubs"));
+        nonStraightHand.add(new Card("9", "Spades"));
+        nonStraightHand.add(new Card("K", "Hearts"));
         assertFalse(handValue.isStraight(nonStraightHand));
     }
+
 
     @Test
     public void testIsThreeOfAKind() {
