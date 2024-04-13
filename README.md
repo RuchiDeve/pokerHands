@@ -1,11 +1,12 @@
 This project implements a poker hand evaluator in Java, allowing users to determine the ranking of poker hands and compare them to determine winners.
 
 Components:
- HandValue Class: Defines methods for evaluating poker hands, including determining the rank of a hand, checking for specific hand combinations (e.g., Royal Flush, Four of a Kind), and comparing high cards.
- Main Class: Provides a command-line interface for reading poker hands from a file, evaluating them using the HandValue class, and determining the winner based on hand ranks and high card comparisons.
- Card Class: Represents a playing card with a value and a suit. Used to construct hands and perform comparisons.
- DeckBuilder Class: Provides functionality for parsing hands from a text representation and organising them into appropriate data structures for evaluation.
- Enum:
+1. HandValue Class: Defines methods for evaluating poker hands, including determining the rank of a hand, checking for specific hand combinations (e.g., Royal Flush, Four of a Kind), and comparing high cards.
+2. Main Class: Provides a command-line interface for reading poker hands from a file, evaluating them using the HandValue class, and determining the winner based on hand ranks and high 
+   card comparisons.
+3. Card Class: Represents a playing card with a value and a suit. Used to construct hands and perform comparisons.
+4. DeckBuilder Class: Provides functionality for parsing hands from a text representation and organising them into appropriate data structures for evaluation.
+5. Enum:
  The project includes an enum named Rank to represent the possible ranks of poker hands.
  Each rank is assigned a numerical value to facilitate comparisons.
  The enum provides clarity and maintainability by encapsulating the different hand ranks in the poker game.
