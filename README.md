@@ -1,4 +1,4 @@
-#Poker Hands Challenge#
+# Poker Hands Challenge
 This project implements a poker hand evaluator in Java, allowing users to determine the ranking of poker hands and compare them to determine winners.
 
 Components:
