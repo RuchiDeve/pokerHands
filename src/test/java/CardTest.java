@@ -6,32 +6,26 @@ import org.junit.Test;
 
 
 public class CardTest {
-
-
     @Test
     public void testConstructor() {
         Card card = new Card(10, "Spades");
         assertEquals(10, card.getValue());
         assertEquals("Spades", card.getSuit());
     }
-
     @Test
     public void testMakeCard() {
         Card card = Card.makeCard("3H");
         assertEquals(3, card.getValue());
         assertEquals("H", card.getSuit());
     }
-
     @Test
     public void testEquals() {
         Card card1 = new Card(10, "Spades");
         Card card2 = new Card(10, "Spades");
         Card card3 = new Card(5, "Hearts");
-
         assertEquals(card1, card2);
         assertNotEquals(card1, card3);
     }
-
     @Test
     public void testCompareTo() {
         Card card1 = new Card(2, "H");

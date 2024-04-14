@@ -33,6 +33,6 @@ public class Main {
                 }
             }
         }
-        System.out.println("Player 1 won " + count + " times");
+        System.out.println("Player 1 won " + count + " hands ");
     }
 }

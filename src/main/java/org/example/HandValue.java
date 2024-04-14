@@ -87,36 +87,16 @@ public class HandValue {
     }
     public boolean isStraight(List<Card> hand) {
         Collections.sort(hand);
-
-        // Check for A-2-3-4-5 straight
-        boolean isAceLowStraight = hand.get(0).getValue() == 2 &&
-                hand.get(1).getValue() == 3 &&
-                hand.get(2).getValue() == 4 &&
-                hand.get(3).getValue() == 5 &&
-                hand.get(4).getValue() == 14; // Ace is considered as 1 for low straight
-
-        // Check for 2-3-4-5-A straight
-        boolean isAceHighStraight = hand.get(0).getValue() == 2 &&
-                hand.get(1).getValue() == 3 &&
-                hand.get(2).getValue() == 4 &&
-                hand.get(3).getValue() == 5 &&
-                hand.get(4).getValue() == 14; // Ace is considered as 14 for high straight
-
-        // Check for other straights
-        if (!isAceLowStraight && !isAceHighStraight) {
-            for (int i = 0; i < hand.size() - 1; i++) {
-                int currentValue = hand.get(i).getValue();
-                int nextValue = hand.get(i + 1).getValue();
-                if (nextValue - currentValue != 1) {
-                    return false;
-                }
+        for (int i = 0; i < hand.size() - 1; i++) {
+            int currentValue = hand.get(i).getValue();
+            int nextValue = hand.get(i + 1).getValue();
+            if (nextValue - currentValue != 1) {
+                return false;
             }
         }
 
         return true;
     }
-
-
 
     public boolean isThreeOfAKind(List<Card> hand) {
         for (Card card : hand) {
@@ -159,9 +139,7 @@ public class HandValue {
 
     public int highestCardProcessing(List<Card> player1Hand, List<Card> player2Hand) {
         int whoWins = 0;
-        Collections.sort(player1Hand, Comparator.reverseOrder());
-        Collections.sort(player2Hand, Comparator.reverseOrder());
-        for (int i = 0; i < player1Hand.size(); i++) {
+        for (int i = player1Hand.size()-1; i >= 0; i--) {
             if (player1Hand.get(i).getValue() > player2Hand.get(i).getValue()) {
                 whoWins = 1;
                 break;
