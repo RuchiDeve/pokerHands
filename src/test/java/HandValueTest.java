@@ -158,9 +158,7 @@ public class HandValueTest {
             straightHand.add(new Card("K", "Spades"));
             straightHand.add(new Card("A", "Hearts"));
             assertTrue(handValue.isStraight(straightHand));
-
-
-        }
+    }
 
 
     @Test
@@ -237,7 +235,6 @@ public class HandValueTest {
     @Test
     public void testHighestCardProcessing() {
         HandValue handValue = new HandValue();
-
         // Test case where player 1 wins
         List<Card> player1WinningHand = new ArrayList<>();
         player1WinningHand.add(new Card("2", "Hearts"));
